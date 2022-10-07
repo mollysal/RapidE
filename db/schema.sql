@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS rapidE_db;
+CREATE DATABASE rapidE_db;
