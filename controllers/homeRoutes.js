@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Product, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const dbProductData = await Product.findAll({
           include: [
