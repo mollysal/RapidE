@@ -15,5 +15,8 @@ Product.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
+Message.belongsTo(User, {
+    foreignKey: 'user_id'
+});
 
 module.exports = { User, Product, Message };
