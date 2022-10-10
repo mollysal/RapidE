@@ -2,37 +2,50 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-class Product extends Model {}
+class Product extends Model { }
 
-const ItemSchema = new Schema({
-            title: {
-                type: String,
-                required: true
-            },
-            description: {
-                type: String,
-                required: true
-            },
-            category:{
-                type: String,
-                required: true
-            },
-            price: {
-                type: Number,
-                required: true
-            },
-            date_added: {
-                type: Date,
-                default: Date.now
-            },
+Product.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.STRING,
+      },
+      date_created: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      initial_price: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        validate: {
+            isDecimal: true
+        }
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id',
         },
-            {
-                sequelize,
-                timestamps: false,
-                freezeTableName: true,
-                underscored: true,
-                modelName: 'project',
-              }
-        );
+      },
+    },
+    {
+      sequelize,
+      timestamps: false,
+      freezeTableName: true,
+      underscored: true,
+      modelName: 'product',
+    }
+  );
 
 module.exports = Product;
