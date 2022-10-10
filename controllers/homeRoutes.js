@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Product, User } = require('../models');
-const withAuth = require('../utils/auth');
+const { Product, User, Message } = require('../models');
+//const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+/* router.get('/', withAuth, async (req, res) => {
     try {
         const dbProductData = await Product.findAll({
           include: [
@@ -26,6 +26,12 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(err);
       }
 
+}); */
+router.get('/', async (req, res) => {
+  res.render('homepage')
+})
+router.get('/messages' , async (req, res) => {
+  res.render('messages')
 })
 
 module.exports = router;
