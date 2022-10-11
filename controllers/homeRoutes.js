@@ -34,4 +34,8 @@ router.get('/messages' , async (req, res) => {
   res.render('messages')
 })
 
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
 module.exports = router;
