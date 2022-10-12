@@ -1,20 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-
-//GET
-router.get('/', async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      attributes: {exclude: ['password']}
-    });
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-
+// POST api/Product/ Route
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -22,6 +9,7 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.name = userData.name;
 
       res.status(200).json(userData);
     });
@@ -30,7 +18,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Login Route
+// Login Route (Not Working Yet)
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -54,6 +42,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.name = userData.name;
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });

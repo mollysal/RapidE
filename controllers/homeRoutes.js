@@ -1,40 +1,31 @@
 const router = require('express').Router();
 const { Product, User, Message } = require('../models');
-//const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
-/* router.get('/', withAuth, async (req, res) => {
-    try {
-        const dbProductData = await Product.findAll({
-          include: [
-            {
-              model: Product,
-              attributes: ['productName', 'description'],
-            },
-          ],
-        });
-    
-        const prodcuts = dbProductData.map((prodcuts) =>
-          prodcuts.get({ plain: true })
-        );
-        // Send over the 'loggedIn' session variable to the 'homepage' template
+router.get('/', withAuth, async (req, res) => {
+
         res.render('homepage', {
-          prodcuts,
-          loggedIn: req.session.loggedIn,
+          loggedIn: req.session.logged_in,
+          name: req.session.name
         });
-      } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-      }
-
-}); */
-router.get('/', async (req, res) => {
+});
+/* router.get('/', async (req, res) => {
   res.render('homepage')
-})
-router.get('/messages' , async (req, res) => {
-  res.render('messages')
+}) */
+router.get('/messages' , withAuth, async (req, res) => {
+  res.render('messages',  {
+    loggedIn: req.session.logged_in,
+    name: req.session.name
+  })
 })
 
 router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
   res.render('login');
 });
 
