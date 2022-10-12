@@ -15,11 +15,17 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/messages' , withAuth, async (req, res) => {
   res.render('messages',  {
     loggedIn: req.session.logged_in,
-    name: req.session.user_id
+    name: req.session.name
   })
 })
 
 router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
   res.render('login');
 });
 
