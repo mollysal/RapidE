@@ -7,6 +7,7 @@ router.post('/', withAuth, async (req, res) => {
     // Once logged in they can create a new Product
     try {
       const newProduct = await Product.create({
+        // Image will get added to body
         ...req.body,
         user_id: req.session.user_id,
       });
