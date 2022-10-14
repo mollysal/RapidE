@@ -34,5 +34,8 @@ router.get('/login', (req, res) => {
 });
 
 
+router.get('/productupload', async (req,res) => {
+  res.render('productupload')
+})
 
 module.exports = router;

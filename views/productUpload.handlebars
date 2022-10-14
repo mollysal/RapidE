@@ -1,0 +1,122 @@
+{{!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Imgur-Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <p>Uploading a Product</p>
+    <div class="title">
+            <h1>Image Upload</h1>
+        <p>Upload your Image</p>
+    </div>
+    <div class="dropzone">
+        <div class="info"></div>
+    </div>
+    <script type="text/javascript" src="../public/js/form.js"></script>
+</body>
+
+</html> --}}
+
+{{!-- <form id="imgur">
+    <input type="file" class="imgur" accept="image/*" data-max-size="5000" />
+</form>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script>
+    $("document").ready(function () {
+
+        $('input[type=file]').on("change", function () {
+
+            var $files = $(this).get(0).files;
+
+            if ($files.length) {
+
+                // Reject big files
+                if ($files[0].size > $(this).data("max-size") * 1024) {
+                    console.log("Please select a smaller file");
+                    return false;
+                }
+
+                // Replace ctrlq with your own API key
+                var apiUrl = 'https://api.imgur.com/3/image';
+                var apiKey = '4f09a0640b4bb84';
+
+                var formData = new FormData();
+                formData.append("image", $files[0]);
+
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": apiUrl,
+                    "method": "POST",
+                    "datatype": "json",
+                    "headers": {
+                        "Authorization": "Client-ID " + apiKey
+                    },
+                    "processData": false,
+                    "contentType": false,
+                    "data": formData,
+                    beforeSend: function (xhr) {
+                        console.log("Uploading");
+                    },
+                    success: function (res) {
+                        console.log(res.data.link);
+                        $('body').append('<img src="' + res.data.link + '" />');
+                    },
+                    error: function () {
+                        alert("Failed");
+                    }
+                }
+                $.ajax(settings).done(function (response) {
+                    console.log("Done");
+                });
+            }
+        });
+    });
+</script> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imgur API Image Uploader</title>
+</script>
+</head>
+
+<body>
+    <img src="https://i.imgur.com/U7afLiO.png" id="img" height="200px">
+    <br />
+    <input type="file" id="file">
+    <br />
+    <strong>
+        <p id="url"></p>
+    </strong>
+
+    <script>
+        const apiKey = "xarndlhb"
+        const file = document.getElementById("file")
+        const img = document.getElementById("img")
+        const url = document.getElementById("url")
+        file.addEventListener("change", ev => {
+            const formdata = new FormData()
+            formdata.append("file", ev.target.files[0])
+            formdata.append("upload_preset", apiKey)
+            fetch("https://api.cloudinary.com/v1_1/dj6n2zg0o/image/upload", {
+                method: "post",
+                body: formdata
+            }).then(data => data.json()).then(data => {
+                img.src = data.url
+                url.innerText = data.data.link
+            })
+        })
+    </script>
+
+</body>
+</html>
