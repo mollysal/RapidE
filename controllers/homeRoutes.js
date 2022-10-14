@@ -3,13 +3,36 @@ const { Product, User, Message } = require('../models');
 const withAuth = require('../utils/auth');
 const { get } = require('./api');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
+  try {
 
-        res.render('homepage', {
-          loggedIn: req.session.logged_in,
-          name: req.session.name
-        });
+    const productData = await Product.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const products = productData.map((product) => product.get({ plain: true }));
+
+    res.render('homepage', { 
+      products, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+// router.get('/', async (req, res) => {
+
+//         res.render('homepage', {
+//           loggedIn: req.session.logged_in,
+//           name: req.session.name
+//         });
+// });
 /* router.get('/', async (req, res) => {
   res.render('homepage')
 }) */
@@ -32,6 +55,30 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+// Get Products
+// router.get('/', async (req, res) => {
+//   try {
+
+//     const productData = await Post.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
+
+//     const products = productData.map((product) => product.get({ plain: true }));
+
+//     res.render('homepage', { 
+//       products, 
+//       logged_in: req.session.logged_in 
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
 router.get('/productupload', async (req,res) => {
