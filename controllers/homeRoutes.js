@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Product, User, Message } = require('../models');
 const withAuth = require('../utils/auth');
+const { get } = require('./api');
 
 router.get('/', withAuth, async (req, res) => {
 
@@ -12,6 +13,9 @@ router.get('/', withAuth, async (req, res) => {
 /* router.get('/', async (req, res) => {
   res.render('homepage')
 }) */
+
+// When you get by ID, it needs to Render an indivdual Product Page (It's own seperate view - We don't need a partial (re-usable component))
+
 router.get('/messages' , withAuth, async (req, res) => {
   res.render('messages',  {
     loggedIn: req.session.logged_in,
@@ -28,5 +32,10 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+
+router.get('/productupload', async (req,res) => {
+  res.render('productupload')
+})
 
 module.exports = router;
