@@ -5,14 +5,21 @@ const withAuth = require('../../utils/auth');
 // User needs to be logged in before they can post a product
 router.post('/', withAuth, async (req, res) => {
     // Once logged in they can create a new Product
+    console.log(req.session);
+    
     try {
       const newProduct = await Product.create({
         // Image will get added to body
         ...req.body,
         user_id: req.session.user_id,
       });
-  
-      res.status(200).json(newProduct);
+      // Get of route at homepage /
+      res.redirect('/');
+      // const products = productData.map((product) => product.get({ plain: true }));
+      // res.status(200).json(newProduct);
+      // res.render('homepage', { 
+      //   products
+      // });
     } catch (err) {
       res.status(400).json(err);
     }

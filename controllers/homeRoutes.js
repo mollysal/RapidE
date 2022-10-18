@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', { 
       products, 
-      logged_in: req.session.logged_in 
+      loggedIn: req.session.logged_in,
+      name: req.session.name
     });
   } catch (err) {
     res.status(500).json(err);
@@ -82,7 +83,10 @@ router.get('/login', (req, res) => {
 
 
 router.get('/productupload', async (req,res) => {
-  res.render('productupload')
+  res.render('productupload', {
+    loggedIn: req.session.logged_in,
+    name: req.session.name
+  })
 })
 
 module.exports = router;
