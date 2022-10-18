@@ -11,22 +11,32 @@
 </head>
 
 <body>
-
-    <form class="was-validated">
-        <div>
-            <p></p>
+    <form class="new-product-form was-validated">
+        <!-- Product Page Title -->
+        <div class="p-3 pb-md-4 mx-auto text-center">
+            <h5 class="display-4 fw-normal">Product Upload</h5>
+            <p class="fst-italic">Fill out the information below to sell your product.</p>
         </div>
+
+        <!-- Product Name Input -->
+        <div class="input-group mb-3">
+            <span class="input-group-text">Product Name</span>
+            <input type="text" class="form-control" id="name" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+        </div>
+        <!-- Product Price Input -->
         <div class="input-group mb-3">
             <span class="input-group-text">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+            <input type="text" class="form-control" id="initial_price" aria-label="Amount (to the nearest dollar)"
+                required>
             <span class="input-group-text">.00</span>
         </div>
-
+        <!-- Product Description Input -->
         <div class="input-group">
             <span class="input-group-text">Product Description</span>
-            <textarea class="form-control" aria-label="With textarea" required></textarea>
+            <textarea class="form-control" id="description" aria-label="With textarea" required></textarea>
         </div>
-
+        <!-- Product Image Uploading -->
         <div class="my-3">
             <p class="fw-semibold">Upload Image of Product</p>
             <!-- Image Preview Here -->
@@ -39,39 +49,20 @@
             <div class="invalid-feedback">Required to Upload Image file type: .jpeg or .png</div>
             <!-- Image URL Here -->
             <div class="my-2">
-                <p id="url"></p>
+                <p id="image_url"></p>
             </div>
         </div>
-
+        <!-- Submit Product -->
         <div class="my-3" id="submitButton">
             <button class="btn btn-primary" type="submit">Submit Product</button>
         </div>
     </form>
-
-
-    <!-- Uploading image & retrieving URL -->
-    <script>
-        const apiKey = "xarndlhb"
-        const file = document.getElementById("file")
-        const img = document.getElementById("img")
-        const url = document.getElementById("url")
-        file.addEventListener("change", ev => {
-            const formdata = new FormData()
-            formdata.append("file", ev.target.files[0])
-            formdata.append("upload_preset", apiKey)
-            fetch("https://api.cloudinary.com/v1_1/dj6n2zg0o/image/upload", {
-                method: "post",
-                body: formdata
-            }).then(data => data.json()).then(data => {
-                img.src = data.url
-                url.innerText = data.url
-            })
-        })
-    </script>
-
+    
+    <script src="./js/form.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+
 
 </body>
 
