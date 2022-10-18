@@ -40,12 +40,6 @@ router.get('/', async (req, res) => {
 
 // When you get by ID, it needs to Render an indivdual Product Page (It's own seperate view - We don't need a partial (re-usable component))
 
-router.get('/messages' , withAuth, async (req, res) => {
-  res.render('messages',  {
-    loggedIn: req.session.logged_in,
-    name: req.session.name
-  })
-})
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
