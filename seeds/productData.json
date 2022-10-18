@@ -4,14 +4,14 @@
         "description": "90's Rock Band T-Shirt",
         "initial_price": 15.00,
         "user_id": 1,
-        "image_url": "Picture Holder"
+        "image_url": "https://images.aamutee.net/store10/black/Disney-Villains-Evil-Queen-Neon-90s-Rock-Band-T-Shirt.png"
     },
     {
         "name": "Air Jordans for Sale",
         "description": "Brand new Jordans Fire Red 4s",
         "initial_price": 250.00,
         "user_id": 2,
-        "image_url": "Picture Holder 2"
+        "image_url": "https://cdn.flightclub.com/TEMPLATE/178193/1.jpg"
 
     },
     {
@@ -19,7 +19,7 @@
         "description": "Levis Jacket ",
         "initial_price": 45.00,
         "user_id": 3,
-        "image_url": "Picture Holder 3"
+        "image_url": "https://ragstock.com/wp-content/uploads/Vintage-Denim-Jacket-Close-833.jpg"
 
     }
 ]
