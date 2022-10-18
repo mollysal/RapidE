@@ -2,27 +2,24 @@
     {
         "name": "Vintage T-Shirt for Sale",
         "description": "90's Rock Band T-Shirt",
-        "date_created": "2022-09-11",
         "initial_price": 15.00,
         "user_id": 1,
-        "image_url": "Picture Holder"
+        "image_url": "https://images.aamutee.net/store10/black/Disney-Villains-Evil-Queen-Neon-90s-Rock-Band-T-Shirt.png"
     },
     {
         "name": "Air Jordans for Sale",
         "description": "Brand new Jordans Fire Red 4s",
-        "date_created": "2022-08-11",
         "initial_price": 250.00,
         "user_id": 2,
-        "image_url": "Picture Holder 2"
+        "image_url": "https://cdn.flightclub.com/TEMPLATE/178193/1.jpg"
 
     },
     {
         "name": "Vintage denim jacket",
         "description": "Levis Jacket ",
-        "date_created": "2022-10-11",
         "initial_price": 45.00,
         "user_id": 3,
-        "image_url": "Picture Holder 3"
+        "image_url": "https://ragstock.com/wp-content/uploads/Vintage-Denim-Jacket-Close-833.jpg"
 
     }
 ]

@@ -1,7 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const bcrypt = require('bcrypt');
-
 class Product extends Model { }
 
 Product.init(
@@ -19,11 +17,11 @@ Product.init(
       description: {
         type: DataTypes.STRING,
       },
-      date_created: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
+      // date_created: {
+      //   type: DataTypes.DATE,
+      //   allowNull: false,
+      //   defaultValue: DataTypes.NOW,
+      // },
       initial_price: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,

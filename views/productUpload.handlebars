@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <form class="was-validated">
+    <form class="new-product-form was-validated">
         <!-- Product Page Title -->
         <div class="p-3 pb-md-4 mx-auto text-center">
             <h5 class="display-4 fw-normal">Product Upload</h5>
@@ -20,8 +20,8 @@
 
         <!-- Product Name Input -->
         <div class="input-group mb-3">
-            <span class="input-group-text" id="name">Product Name</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <span class="input-group-text">Product Name</span>
+            <input type="text" class="form-control" id="name" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
         </div>
         <!-- Product Price Input -->
@@ -57,28 +57,7 @@
             <button class="btn btn-primary" type="submit">Submit Product</button>
         </div>
     </form>
-
-
-    <!-- Uploading image & retrieving URL (Should be in form.js) -->
-    {{!--
-    <script>
-        const apiKey = "xarndlhb"
-        const file = document.getElementById("file")
-        const img = document.getElementById("img")
-        const url = document.getElementById("image_url")
-        file.addEventListener("change", ev => {
-            const formdata = new FormData()
-            formdata.append("file", ev.target.files[0])
-            formdata.append("upload_preset", apiKey)
-            fetch("https://api.cloudinary.com/v1_1/dj6n2zg0o/image/upload", {
-                method: "post",
-                body: formdata
-            }).then(data => data.json()).then(data => {
-                img.src = data.url
-                url.innerText = data.url
-            })
-        })
-    </script> --}}
+    
     <script src="./js/form.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
