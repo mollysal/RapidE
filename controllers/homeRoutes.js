@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, User, Message } = require('../models');
+const { Product, User, Message, buyNow } = require('../models');
 const withAuth = require('../utils/auth');
 const { get } = require('./api');
 
@@ -84,6 +84,13 @@ router.get('/login', (req, res) => {
 
 router.get('/productupload', async (req,res) => {
   res.render('productupload', {
+    loggedIn: req.session.logged_in,
+    name: req.session.name
+  })
+})
+
+router.get('/buynow', async(req, res) => {
+  res.render('buynow', {
     loggedIn: req.session.logged_in,
     name: req.session.name
   })
