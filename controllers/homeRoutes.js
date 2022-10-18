@@ -76,15 +76,15 @@ router.get('/login', (req, res) => {
 // });
 
 
-router.get('/productupload', async (req,res) => {
+router.get('/productupload', withAuth, async (req,res) => {
   res.render('productupload', {
     loggedIn: req.session.logged_in,
     name: req.session.name
   })
 })
 
-router.get('/buynow', async(req, res) => {
-  res.render('buynow', {
+router.get('/buyNow', withAuth, async(req, res) => {
+  res.render('buyNow', {
     loggedIn: req.session.logged_in,
     name: req.session.name
   })
