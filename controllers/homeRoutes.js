@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, User, Message } = require('../models');
+const { Product, User, Message, buyNow } = require('../models');
 const withAuth = require('../utils/auth');
 const { get } = require('./api');
 
@@ -40,12 +40,6 @@ router.get('/', async (req, res) => {
 
 // When you get by ID, it needs to Render an indivdual Product Page (It's own seperate view - We don't need a partial (re-usable component))
 
-router.get('/messages' , withAuth, async (req, res) => {
-  res.render('messages',  {
-    loggedIn: req.session.logged_in,
-    name: req.session.name
-  })
-})
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -84,6 +78,13 @@ router.get('/login', (req, res) => {
 
 router.get('/productupload', async (req,res) => {
   res.render('productupload', {
+    loggedIn: req.session.logged_in,
+    name: req.session.name
+  })
+})
+
+router.get('/buynow', async(req, res) => {
+  res.render('buynow', {
     loggedIn: req.session.logged_in,
     name: req.session.name
   })
