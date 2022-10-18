@@ -11,8 +11,13 @@ router.post('/', withAuth, async (req, res) => {
         ...req.body,
         user_id: req.session.user_id,
       });
-  
-      res.status(200).json(newProduct);
+      // Get of route at homepage /
+      res.redirect('/');
+      // const products = productData.map((product) => product.get({ plain: true }));
+      // res.status(200).json(newProduct);
+      // res.render('homepage', { 
+      //   products
+      // });
     } catch (err) {
       res.status(400).json(err);
     }
