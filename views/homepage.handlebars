@@ -1,10 +1,13 @@
+
 <!-- Loop over each object in the product array -->
 {{#each products}}
-<div class="text-center p-2 mb-5 bg-light border border-primary">
+<div class="text-center col-lg-4 card border border-3 border-primary">
   <h2>{{name}}</h2>
   <p>{{description}}</p>
   <p>Created by {{user.name}}</p>
-  <img class ="w-25" src ={{image_url}}>
+  <div class="">
+  <img class="w-25"src ={{image_url}}>
+  </div>
   <p>
     <span for="img" aria-label="money">💲</span>
     <span class="dollar-amount">{{initial_price}}</span>
