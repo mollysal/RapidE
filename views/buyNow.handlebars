@@ -1,27 +1,7 @@
-{{!-- <section>
-    <div class="container">
-
-        <form action="" id="checkout-form">
-
-             <div style="border: 1px solid; padding: 35px 35px; margin: 80px 10px;"
-                class="checkout col-md-5 float-right">
-                <h4>Total Amount : $ {{initial_price}}</h4>
-                <h5>Payment Method</h5>
-                    <label for="online">Online Payment</label><br>
-                </div>
-
-                <button type="submit" style="width: 100%;" class="btn btn-primary py-2 text-centered">Submit</button>
-            </div>
-
-        </form>
-
-    </div>
-</section> --}}
-
-
 <div class="container">
-  <form class="buyNow">
-    <div class="row order col-md-4 text-center">
+  <form action="order">
+    <div class="row order">
+      <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Shipping Information</h3>
@@ -57,6 +37,7 @@
             </div>
           </div>
         </div>
+      </div>
       <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -112,3 +93,6 @@
     </div>
   </form>
 </div>
+
+
+
