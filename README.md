@@ -15,8 +15,6 @@ E-Commerce Site
 
 [Features](#features)
 
-[Images](#images)
-
 ---
 
 ## Description 
